@@ -4,3 +4,6 @@
 [submodule "lnpos"]
 	path = lnpos
 	url = https://github.com/lnbits/lnpos
+[submodule "bitcoinSwitch"]
+	path = bitcoinSwitch
+	url = https://github.com/lnbits/bitcoinSwitch
