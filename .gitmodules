@@ -7,3 +7,6 @@
 [submodule "bitcoinSwitch"]
 	path = bitcoinSwitch
 	url = https://github.com/lnbits/bitcoinSwitch
+[submodule "bitcoinswitch"]
+	path = bitcoinswitch
+	url = https://github.com/lnbits/bitcoinswitch
