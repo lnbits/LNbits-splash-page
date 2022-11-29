@@ -9,7 +9,7 @@ const app = Vue.createApp({
     el: '#q-app',
     data() {
         return {
-            url: "https://admin.b1tco1n.org",
+            url: "https://api.lnbits.com",
             prompt: false,
             instanceDialog: false,
             loginDialogue: false,
