@@ -173,48 +173,56 @@ const app = Vue.createApp({
         },
         updateInstance: function(action) {
             let that = this;
+            let update = () => {
+                axios({
+                  method: "PUT",
+                  url: this.url + "/instance",
+                  data: {
+                    action: action,
+                    instance_id: this.active_instance.id
+                  },
+                  headers: {
+                    "Authorization": "Bearer " + this.access_token,
+                  },
+                }).then(function (response) {
+                    that.getInstances();
+                    that.$q.notify({
+                        type: 'positive',
+                        message: "ran action: " + action
+                    });
+                    if (action == "destroy") {
+                        that.instanceDialog = false;
+                    }
+                  })
+                  .catch(function (error) {
+                    let msg = "run action FAILED: " + action;
+                    if (error.response) {
+                      msg = error.response.data.detail
+                    }
+                    that.$q.notify({
+                        type: 'negative',
+                        message: msg
+                    });
+                  });
+            };
+            let message = undefined;
             if (action == "destroy") {
-                return this.confirmDialog("are you sure you want to destroy? destroying will delete your instance and every bit of data.");
+                message = "are you sure you want to destroy? destroying will delete your instance and every bit of data.";
             }
             if (action == "reset") {
-                return this.confirmDialog("are you sure you want to reset? resetting will delete all your admin settings including your super user.");
+                message = "are you sure you want to reset? resetting will delete all your admin settings including your super user.";
             }
             if (action == "disable") {
-                return this.confirmDialog("are you sure you want to disable? disabling will make your instance permanantly unavailable.");
+                message = "are you sure you want to disable? disabling will make your instance permanantly unavailable.";
             }
             if (action == "restart") {
-                return this.confirmDialog("are you sure you want to restart? restarting will make your instance temporarly unavailable.");
+                message = "are you sure you want to restart? restarting will make your instance temporarly unavailable.";
             }
-            axios({
-              method: "PUT",
-              url: this.url + "/instance",
-              data: {
-                action: action,
-                instance_id: this.active_instance.id
-              },
-              headers: {
-                "Authorization": "Bearer " + this.access_token,
-              },
-            }).then(function (response) {
-                that.getInstances();
-                that.$q.notify({
-                    type: 'positive',
-                    message: "ran action: " + action
-                });
-                if (action == "destroy") {
-                    that.instanceDialog = false;
-                }
-              })
-              .catch(function (error) {
-                let msg = "run action FAILED: " + action;
-                if (error.response) {
-                  msg = error.response.data.detail
-                }
-                that.$q.notify({
-                    type: 'negative',
-                    message: msg
-                });
-              });
+            if (message) {
+                this.confirmDialog(message).onOk(update);
+            } else {
+                update();
+            }
         },
         getInstances: function(cb) {
             let that = this;
