@@ -9,6 +9,7 @@ const app = Vue.createApp({
     el: '#q-app',
     data() {
         return {
+            // url: "http://localhost:8888",
             url: "https://api.lnbits.com",
             prompt: false,
             instanceDialog: false,
@@ -49,7 +50,7 @@ const app = Vue.createApp({
         },
         signup: function() {
             let that = this;
-            that.signupErrors = [];
+            // that.signupErrors = [];
             axios({
               method: "POST",
               url: this.url + "/signup",
@@ -65,10 +66,10 @@ const app = Vue.createApp({
               })
               .catch(function (error) {
                 if (error.response) {
-                  that.signupErrors = error.response.data.detail
+                  // that.signupErrors = error.response.data.detail
                   that.$q.notify({
                       type: 'negative',
-                      message: "signup failed"
+                      message: "signup failed: " + error.response.data.detail
                   });
                 }
               });

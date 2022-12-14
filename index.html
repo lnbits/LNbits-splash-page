@@ -126,12 +126,16 @@
                     <q-btn color="deep-purple" flat @click="instanceDialog = false" label="Cancel"></q-btn>
                 </p>
                 <p v-if="active_instance.is_active" style="margin: 18px 0;">
+                    <p v-if="active_instance.is_enabled && !active_instance.adminuser" style="text-align: center;">
+                        <q-spinner-gears color="deep-purple" size="8em" style="margin: 30px auto" />
+                        <q-tooltip :offset="[0, 8]">SaaS application is launching...</q-tooltip>
+                    </p>
                     <q-btn v-if="active_instance.is_enabled && active_instance.adminuser" style="margin:0 4px 4px 0;" color="success" @click="openAdminUrl()" label="Open Admin URL"></q-btn>
                     <q-btn v-if="active_instance.is_enabled" style="margin:0 4px 4px 0;" color="warning" @click="updateInstance('disable')" label="Disable"></q-btn>
-                    <q-btn v-if="!active_instance.is_enabled" style="margin:0 4px 4px 0;" color="success" @click="updateInstance('enable')" label="Enable"></q-btn>
+                    <q-btn v-if="!active_instance.is_enabled && active_instance.timestamp_stop > new Date().getTime() / 1000" style="margin:0 4px 4px 0;" color="success" @click="updateInstance('enable')" label="Enable"></q-btn>
                     <br />
                     <q-btn v-if="active_instance.is_enabled" style="margin:0 4px 4px 0;" color="warning" @click="updateInstance('restart')" label="Restart"></q-btn>
-                    <q-btn style="margin:0 4px 4px 0;" color="danger" @click="updateInstance('reset')" label="Reset"></q-btn>
+                    <q-btn v-if="active_instance.timestamp_stop > new Date().getTime() / 1000" style="margin:0 4px 4px 0;" color="danger" @click="updateInstance('reset')" label="Reset"></q-btn>
                     <q-btn style="margin:0 4px 4px 0;" color="danger" @click="updateInstance('destroy')" label="Destroy"></q-btn>
                 </p>
                 <p>
