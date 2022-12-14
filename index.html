@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -127,7 +126,7 @@
                 </p>
                 <p v-if="active_instance.is_active" style="margin: 18px 0;">
                     <p v-if="active_instance.is_enabled && !active_instance.adminuser" style="text-align: center;">
-                        <q-spinner-gears color="deep-purple" size="8em" style="margin: 30px auto" />
+                        <q-spinner-gears color="deep-purple" size="4em" style="margin: 20px auto" />
                         <q-tooltip :offset="[0, 8]">SaaS application is launching...</q-tooltip>
                     </p>
                     <q-btn v-if="active_instance.is_enabled && active_instance.adminuser" style="margin:0 4px 4px 0;" color="success" @click="openAdminUrl()" label="Open Admin URL"></q-btn>
