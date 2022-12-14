@@ -158,8 +158,33 @@ const app = Vue.createApp({
                 }
               });
         },
+        confirmDialog(message) {
+            return Quasar.Dialog.create({
+                message: message,
+                ok: {
+                    flat: true,
+                    color: 'deep-purple'
+                },
+                cancel: {
+                    flat: true,
+                    color: 'grey'
+                }
+            });
+        },
         updateInstance: function(action) {
             let that = this;
+            if (action == "destroy") {
+                return this.confirmDialog("are you sure you want to destroy? destroying will delete your instance and every bit of data.");
+            }
+            if (action == "reset") {
+                return this.confirmDialog("are you sure you want to reset? resetting will delete all your admin settings including your super user.");
+            }
+            if (action == "disable") {
+                return this.confirmDialog("are you sure you want to disable? disabling will make your instance permanantly unavailable.");
+            }
+            if (action == "restart") {
+                return this.confirmDialog("are you sure you want to restart? restarting will make your instance temporarly unavailable.");
+            }
             axios({
               method: "PUT",
               url: this.url + "/instance",

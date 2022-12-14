@@ -104,6 +104,9 @@
         .errors :last-child {
             margin-bottom: 12px;
         }
+        .q-dialog-plugin .row {
+            margin: 0;
+        }
     </style>
 
   </head>
@@ -144,6 +147,7 @@
         <q-dialog v-model="loginDialogue" position="top">
             <q-card style="min-height: 200px" class="q-px-lg q-py-lg">
                 <h2>Login</h2>
+                <p><b>DISCLAIMER: it is still beta, just use it for testing purposes.</b></p>
                 <q-card-section class="q-pt-none">
                     <div class="row">
                         <div class="col">
@@ -165,7 +169,8 @@
         </q-dialog>
         <q-dialog v-model="signUpDialogue" position="top">
             <q-card style="min-height: 200px" class="q-px-lg q-py-lg">
-                <h2>Sign Up</h2>
+                <h2>Sign Up for LNbits Saas</h2>
+            <p>After you an account, you can launch a LNbits SaaS instance. It costs <b>70 sats</b> per hour at a <b>minimum of 72 hours</b>. When you pay the LNURLp link, your instance will get deployed and it takes about 1 minute to become available. It will get disabled after your time runs out. You can extend your time or start it again by just paying the Pay Link for that specific instance again. After 1 month of inactivity the instance will get permanently deleted.</p>
                 <q-card-section class="q-pt-none">
                     <div class="row">
                         <div class="col">
