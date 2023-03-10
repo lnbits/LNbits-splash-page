@@ -7,3 +7,6 @@
 [submodule "bitcoinswitch"]
 	path = bitcoinswitch
 	url = https://github.com/lnbits/bitcoinswitch
+[submodule "nostr-signing-device"]
+	path = nostr-signing-device
+	url = https://github.com/lnbits/nostr-signing-device
