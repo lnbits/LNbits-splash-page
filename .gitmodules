@@ -10,3 +10,6 @@
 [submodule "nostr-signing-device"]
 	path = nostr-signing-device
 	url = https://github.com/lnbits/nostr-signing-device
+[submodule "NerdMiner_v2"]
+	path = NerdMiner_v2
+	url = https://github.com/lnbits/NerdMiner_v2
