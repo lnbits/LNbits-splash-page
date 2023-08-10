@@ -13,3 +13,6 @@
 [submodule "NerdMiner_v2"]
 	path = NerdMiner_v2
 	url = https://github.com/lnbits/NerdMiner_v2
+[submodule "nostr-market-app"]
+	path = nostr-market-app
+	url = https://github.com/lnbits/nostr-market-app.git
