@@ -16,3 +16,6 @@
 [submodule "nostr-market-app"]
 	path = nostr-market-app
 	url = https://github.com/lnbits/nostr-market-app.git
+[submodule "lnbits-extensions"]
+	path = lnbits-extensions
+	url = https://github.com/lnbits/lnbits-extensions.git
